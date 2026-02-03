@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="css/dashboard.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   <script src="js/models.js" type="module"></script>
   <script src="js/components.js" defer></script>
   <script src="js/dashboard.js" type="module"></script>
@@ -19,7 +20,40 @@
 
 <body>
   <header>
-    <h1 class="title">Slieten 24: Energy Control Room</h1>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 18px;">
+      <div>
+        <h1 class="title">Energy Control Room</h1>
+      </div>
+      <div class="ip-config">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="enable-caching" style="cursor: pointer; accent-color: var(--accent);">
+          <label for="enable-caching" style="font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 600; white-space: nowrap;">Local Caching</label>
+        </div>
+        <div class="divider"></div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="timeframe" style="font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 600;">View:</label>
+          <select id="timeframe" class="chip" style="border-radius: 8px; font-family: inherit; font-size: 13px; padding: 4px 8px; cursor: pointer;">
+            <option value="now">Now</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="week">Week</option>
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+          </select>
+          <input type="week" id="week-selector" class="chip" style="display: none; border-radius: 8px; font-family: inherit; font-size: 13px; padding: 2px 8px;">
+          <input type="month" id="month-selector" class="chip" style="display: none; border-radius: 8px; font-family: inherit; font-size: 13px; padding: 2px 8px;">
+          <select id="year-selector" class="chip" style="display: none; border-radius: 8px; font-family: inherit; font-size: 13px; padding: 4px 8px;">
+            <!-- Will be populated by JS -->
+          </select>
+        </div>
+        <div class="divider"></div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label for="poll-interval" style="font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Poll: <span id="interval-val">1.0</span>s</label>
+          <input type="range" id="poll-interval" min="0.5" max="10" step="0.5" value="1.0" style="cursor: pointer; accent-color: var(--accent);">
+        </div>
+        <input type="text" id="ip-address" placeholder="e.g. 192.168.68.10" class="chip" style="border-radius: 8px; font-family: inherit; font-size: 14px; width: 180px;">
+        <button id="set-ip" class="chip" style="cursor: pointer; background: var(--accent); color: white; border: none;">Connect</button>
+      </div>
+    </div>
     <p class="sub">
       <span class="chip" id="chip-ssid">SSID: --</span>
       <span class="chip" id="chip-meter">Meter: --</span>

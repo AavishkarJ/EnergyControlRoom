@@ -4,7 +4,7 @@ class StatusPulse extends HTMLElement {
     this.innerHTML = `
       <div class="status">
         <div style="display:flex; align-items:center; gap:10px;">
-          <div class="pulse"></div>
+          <div class="pulse" id="pulse-${label.replace(/\s+/g, '-').toLowerCase()}"></div>
           <strong>${label}</strong>
         </div>
       </div>
