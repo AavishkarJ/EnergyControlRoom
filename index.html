@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Energy Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/models.js" type="module"></script>
+  <script src="js/components.js" defer></script>
+  <script src="js/dashboard.js" type="module"></script>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">Slieten 24: Energy Control Room</h1>
+    <p class="sub">
+      <span class="chip" id="chip-ssid">SSID: --</span>
+      <span class="chip" id="chip-meter">Meter: --</span>
+      <span class="chip" id="chip-smr">SMR: --</span>
+      <span class="chip" id="chip-strength">WiFi: --</span>
+      <span class="chip" id="chip-uid">Smart Meter ID: --</span>
+      <span class="chip" id="gas-id">Gas Meter ID: --</span>
+      <span class="chip" id="last-update">Last update: --</span>
+    </p>
+  </header>
+
+  <section class="layout">
+    <live-power-flow></live-power-flow>
+    <live-power-stats></live-power-stats>
+    <phase-stats></phase-stats>
+    <other-stats></other-stats>
+  </section>
+</body>
+
+</html>
